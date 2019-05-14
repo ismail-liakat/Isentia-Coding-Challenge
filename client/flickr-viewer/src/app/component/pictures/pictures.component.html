@@ -1,0 +1,31 @@
+
+<!-- Show for succesful response -  responseCode is 0-->
+<div *ngIf="(responseCode$ | async) =='0' || (responseCode$ | async) == null ; else errordiv " class="container-fluid text-center">
+
+      <!-- Show when the picture$ array has entries -->
+      <div *ngIf="(pictures$ | async)?.length > 0">
+          <div class="row text-center text-lg-left">
+              <div class="col-lg-3 col-md-4 col-6" *ngFor="let picture of pictures$ | async; let i = index">
+                      <a href="{{picture.link}}">
+                        <img src="{{picture.imgUrl}}" alt="Lights" style="width:100%">
+                        <div class="caption text-center">
+                          <p>{{ picture.title }}</p>
+                        </div>
+                      </a>
+                 
+              </div>
+          </div>
+      </div>
+
+        <!-- Show when the picture$ array is empty-->
+        <div *ngIf="(pictures$ | async)?.length == 0" class="alert alert-primary text-center" role="alert">
+            No images found for the tag - {{tagsToDisplay}}
+        </div>
+</div>
+
+<!-- Show when server error-->
+<ng-template #errordiv >
+      <div class="alert alert-danger text-center" role="alert">
+          There was an error with the server. Please try again.
+      </div>
+</ng-template>
