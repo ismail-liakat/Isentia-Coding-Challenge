@@ -1,0 +1,17 @@
+{
+  "name": "flickr-reader",
+  "version": "1.0.0",
+  "description": "An API to get data from the Flickr Public Feed",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mouhamad Ismail",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
+}
