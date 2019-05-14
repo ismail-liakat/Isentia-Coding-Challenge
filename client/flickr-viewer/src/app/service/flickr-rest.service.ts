@@ -11,31 +11,13 @@ export class FlickrRestService {
   apiRoot: string = environment.restApiBaseURL;
   constructor(private http: Http) {}
 
+
   /**
-   * getPictures(string) - 
+   * makeRestCall(string) - 
    *   - takes tags to be searched as Input string param 
    *   - calls the backend REST api
-   *   - converts json to Picture model
-   *   - returns an observable object of type Picture[]
+   *   - returns the JSON object holding the REST API response
    * */
-  getPictures(tags: string): Observable<Picture[]> {
-    var apiURL = this.apiRoot;
-    if(tags.trim().length > 0){
-      apiURL = apiURL+"/"+tags
-    }
-    return this.http.get(apiURL).pipe( // Call the backend api
-      map(res => { // Convert response body to JSON
-        return res.json().pictures.map(picture => { // Create Picture objects from JSON
-          return new Picture(
-            picture.title,
-            picture.link,
-            picture.media.m
-          );
-        });
-      })
-    );
-  }
-
   makeRestCall(tags: string){
     var apiURL = this.apiRoot;
     if(tags.trim().length !== 0){
